@@ -6,7 +6,7 @@
 
 import UIKit
 
-// MARK: - Framework
+// MARK: - Public
 
 public struct Animation {
     public let duration: TimeInterval
@@ -71,11 +71,6 @@ public final class AnimationToken {
     }
 }
 
-internal enum AnimationMode {
-    case inSequence
-    case inParallel
-}
-
 public func animate(_ tokens: [AnimationToken]) {
     guard !tokens.isEmpty else {
         return
@@ -117,6 +112,13 @@ public extension UIView {
     @discardableResult func animate(inParallel animations: Animation...) -> AnimationToken {
         return animate(inParallel: animations)
     }
+}
+
+// MARK: - Internal
+
+internal enum AnimationMode {
+    case inSequence
+    case inParallel
 }
 
 internal extension UIView {
